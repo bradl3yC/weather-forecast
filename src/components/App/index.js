@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import map from 'lodash/map'
+import Moment from 'react-moment'
+import ForecastCard from '../ForecastCard'
 import './index.css';
 
 
@@ -13,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=33705,us&appid=${process.env.REACT_APP_WEATHER_API}`)
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=33705,us&units=imperial&appid=${process.env.REACT_APP_WEATHER_API}`)
     .then(res => {
       return res.json()
     })
@@ -26,10 +28,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Weatherrrzzz</h1>
+        <h1>Forecast for <Moment format="YYYY/MM/DD">{this.state.dt_text}</Moment></h1>
         {map(this.state.forecast, (weather) => (
             <div key={weather.dt}>
-              <p>{weather}</p>
+              <ForecastCard forecast={weather} />
             </div>
         ))}
       </div>

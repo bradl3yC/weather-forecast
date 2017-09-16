@@ -1,0 +1,9 @@
+.forecast {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  width: 20%;
+  flex-wrap: wrap;
+}

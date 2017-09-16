@@ -1,17 +1,15 @@
 // Dependencies
 import React from 'react';
 import Moment from 'react-moment';
-// Internals
 
 
 const ForecastCard = (props) => (
   <div>
-    <p>{props.forecast.main.temp_max}</p>
+    <img src={"http://openweathermap.org/img/w/" + props.forecast.weather[0].icon + ".png"} alt="Current Weather"/>
+    <p>Temp: {props.forecast.main.temp} °F</p>
+    <p>Outlook: {props.forecast.weather[0].main}</p>
     <p>
-      <Moment format="YYYY-MM-DD">{props.forecast.dt_txt}</Moment>
-    </p>
-    <p>
-      <Moment format="HH:mm">{props.forecast.dt_txt}</Moment>
+      Time: <Moment format="h:mm A">{props.forecast.dt_txt}</Moment> <Moment format="YYYY-MM-DD">{props.forecast.dt_txt}</Moment>
     </p>
   </div>
 );
